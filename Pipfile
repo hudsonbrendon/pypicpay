@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 requests-mock = "*"
 black = "*"
+python-decouple = "*"
 
 [packages]
 requests = "*"
