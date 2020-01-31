@@ -15,6 +15,15 @@ class TestPicPay(unittest.TestCase):
     def test_get_url(self):
         self.assertEqual(self.picpay._get_url("/test"), f"{self.picpay._URL}/test")
 
+    def test_headers(self):
+        self.assertEqual(
+            self.picpay.headers,
+            {
+                "x-picpay-token": self.picpay._x_picpay_token,
+                "x-seller-token": self.picpay._x_seller_token,
+            },
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
