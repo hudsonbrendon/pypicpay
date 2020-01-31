@@ -18,3 +18,14 @@ class PicPay(object):
             "x-picpay-token": self._x_picpay_token,
             "x-seller-token": self._x_seller_token
         }
+
+    def _request(self, method, path, json, **kwargs):
+        request = requests.request(
+            method=method,
+            url=self._get_url(path),
+            headers=self.headers(),
+            json=json,
+            **kwargs,
+        )
+        json = request.json()
+        return json
