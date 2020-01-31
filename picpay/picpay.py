@@ -8,3 +8,6 @@ class PicPay(object):
     def __init__(self, x_picpay_token, x_seller_token):
         self._x_picpay_token = x_picpay_token
         self._x_seller_token = x_seller_token
+
+    def _get_url(self, path):
+        return f"{self._URL}{path}"
