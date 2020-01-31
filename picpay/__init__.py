@@ -1,0 +1,1 @@
+from .picpay import PicPay
