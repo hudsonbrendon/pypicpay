@@ -11,3 +11,9 @@ class PicPay(object):
 
     def _get_url(self, path):
         return f"{self._URL}{path}"
+
+    def _get_headers(self):
+        return dict(
+            "x-picpay-token"=x_picpay_token,
+            "x-seller-token"=x_seller_token
+        )
