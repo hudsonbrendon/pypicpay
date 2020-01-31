@@ -26,7 +26,7 @@ jobs:
         make black
     - name: Test with unittest
       env:
-          ID: ${{ secrets.X_PICPAY_TOKEN }}
-          TOKEN: ${{ secrets.X_SELLER_TOKEN }}
+          X_PICPAY_TOKEN: ${{ secrets.X_PICPAY_TOKEN }}
+          X_SELLER_TOKEN: ${{ secrets.X_SELLER_TOKEN }}
       run: |
         make dev
