@@ -16,7 +16,7 @@ class PicPay(object):
     def headers(self):
         return {
             "x-picpay-token": self._x_picpay_token,
-            "x-seller-token": self._x_seller_token
+            "x-seller-token": self._x_seller_token,
         }
 
     def _request(self, method, path, json, **kwargs):
@@ -111,9 +111,7 @@ class PicPay(object):
         """
         path = "callback"
 
-        json = {
-            "referenceId": reference_id
-        }
+        json = {"referenceId": reference_id}
         request = self._request(method="post", path=path, json=json)
 
         return request
