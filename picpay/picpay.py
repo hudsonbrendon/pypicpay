@@ -97,3 +97,21 @@ class PicPay(object):
         request = self._request(method="get", path=path, json=json)
 
         return request
+
+    def notification(self, reference_id):
+        """
+        Iremos notificar o callbackUrl (fornecido na requisição de pagamento), via método POST, informando que houve uma alteração no status do pedido.
+
+        Porém, por questões de segurança, não iremos informar o novo status nesta requisição.
+        Para isto, sua loja (a partir do recebimento de nossa notificação) deverá consultar nosso endpoint de status de pedidos.
+
+        Para que o callback seja considerado confirmado, sua loja deve responder com HTTP Status 200.
+        
+        Saiba mais em: https://ecommerce.picpay.com/doc/#operation/postCallbacks
+        """
+        path = "callback"
+
+        json = {"referenceId": reference_id}
+        request = self._request(method="post", path=path, json=json)
+
+        return request

@@ -69,6 +69,14 @@ class TestPicPay(unittest.TestCase):
         status = self.picpay.status(reference_id=102030)
         self.assertEqual(status, json)
 
+    @requests_mock.Mocker()
+    def test_notification(self, request_mock):
+        url = self.picpay._get_url(path="callback")
+        json = {}
+        request_mock.post(url=url, json=json)
+        notification = self.picpay.notification(reference_id=102030)
+        self.assertEqual(notification, json)
+
 
 if __name__ == "__main__":
     unittest.main()

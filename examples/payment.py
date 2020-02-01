@@ -8,7 +8,7 @@ picpay = PicPay(
 
 payment = picpay.payment(
     reference_id=102030,
-    callback_url="http://www.sualoja.com.br/callback",
+    callback_url="https://picpay.com/site",
     return_url="http://www.sualoja.com.br/cliente/pedido/102030",
     value=20.50,
     expires_at="2022-05-01T16:00:00-03:00",
