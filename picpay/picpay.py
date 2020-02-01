@@ -81,3 +81,19 @@ class PicPay(object):
         request = self._request(method="post", path=path, json=json)
 
         return request
+
+    def status(self, reference_id):
+        """
+        Utilize o endpoint (requisição GET) abaixo para consultar o status de sua requisição de pagameto.
+
+        Saiba mais em: https://ecommerce.picpay.com/doc/#operation/getStatus
+        """
+        path = f"payments/{reference_id}/status"
+
+        json = {
+            "referenceId": reference_id,
+        }
+
+        request = self._request(method="get", path=path, json=json)
+
+        return request

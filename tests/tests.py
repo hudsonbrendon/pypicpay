@@ -61,6 +61,14 @@ class TestPicPay(unittest.TestCase):
         cancellation = self.picpay.cancellation(reference_id=102030)
         self.assertEqual(cancellation, json)
 
+    @requests_mock.Mocker()
+    def test_status(self, request_mock):
+        url = self.picpay._get_url(path="payments/102030/status")
+        json = {"referenceId": "102030", "status": "expired"}
+        request_mock.get(url=url, json=json)
+        status = self.picpay.status(reference_id=102030)
+        self.assertEqual(status, json)
+
 
 if __name__ == "__main__":
     unittest.main()
