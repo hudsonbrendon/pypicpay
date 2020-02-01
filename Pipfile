@@ -7,6 +7,9 @@ verify_ssl = true
 requests-mock = "*"
 black = "*"
 python-decouple = "*"
+setuptools = "*"
+wheel = "*"
+twine = "*"
 
 [packages]
 requests = "*"
