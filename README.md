@@ -6,7 +6,7 @@ Aceite PicPay e faça parte do movimento que está revolucionando a relação co
 [![Github Issues](http://img.shields.io/github/issues/hudsonbrendon/picpay-python.svg?style=flat)](https://github.com/hudsonbrendon/picpay-python/issues?sort=updated&state=open)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 
-![PicPay](logo.png)
+![PicPay](https://logodownload.org/wp-content/uploads/2018/05/picpay-logo-1.png)
 
 # Recursos Disponíveis
 
