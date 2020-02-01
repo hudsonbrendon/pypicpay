@@ -7,3 +7,11 @@ Aceite PicPay e faça parte do movimento que está revolucionando a relação co
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ![PicPay](logo.png)
+
+
+# Recursos
+
+- [x]  Requisição de Pagamento
+- [ ]  Cancelamento
+- [ ]  Status
+- [ ]  Notificação
