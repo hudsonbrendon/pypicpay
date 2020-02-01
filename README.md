@@ -12,6 +12,6 @@ Aceite PicPay e faça parte do movimento que está revolucionando a relação co
 # Recursos
 
 - [x]  Requisição de Pagamento
-- [ ]  Cancelamento
+- [x]  Cancelamento
 - [ ]  Status
 - [ ]  Notificação
