@@ -30,3 +30,8 @@ jobs:
           X_SELLER_TOKEN: ${{ secrets.X_SELLER_TOKEN }}
       run: |
         make dev
+    - name: Send Push Notification
+      uses: techulus/push-github-action@v0.0.2
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        MESSAGE: "Maria Mayse, eu te amo!"
