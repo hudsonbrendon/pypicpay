@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 import requests
 
 
@@ -5,21 +7,21 @@ class PicPay(object):
 
     _URL = "https://appws.picpay.com/ecommerce/public/"
 
-    def __init__(self, x_picpay_token, x_seller_token):
+    def __init__(self, x_picpay_token: str, x_seller_token: str):
         self._x_picpay_token = x_picpay_token
         self._x_seller_token = x_seller_token
 
-    def _get_url(self, path):
+    def _get_url(self, path: str) -> str:
         return f"{self._URL}{path}"
 
     @property
-    def headers(self):
+    def headers(self) -> dict:
         return {
             "x-picpay-token": self._x_picpay_token,
             "x-seller-token": self._x_seller_token,
         }
 
-    def _request(self, method, path, json, **kwargs):
+    def _request(self, method: str, path: str, json: dict, **kwargs):
         request = requests.request(
             method=method,
             url=self._get_url(path),
@@ -31,8 +33,14 @@ class PicPay(object):
         return json
 
     def payment(
-        self, reference_id, callback_url, value, buyer, return_url=None, expires_at=None
-    ):
+        self,
+        reference_id: str,
+        callback_url: str,
+        value: Decimal,
+        buyer: dict,
+        return_url: str = None,
+        expires_at: str = None,
+    ) -> dict:
         """
         Seu e-commerce irá solicitar o pagamento de um pedido através do PicPay na finalização do carrinho de compras.
         Após a requisição http, o cliente deverá ser redirecionado para o endereço informada no campo paymentUrl para que o mesmo possa finalizar o pagamento.
@@ -60,14 +68,14 @@ class PicPay(object):
 
         return request
 
-    def cancellation(self, reference_id):
+    def cancellation(self, reference_id: str) -> dict:
         """
         Utilize este endereço para solicitar o cancelamento/estorno de um pedido. Valem as seguintes regras:
-        
+
         a) Se já foi pago, o cliente PicPay será estornado caso sua conta de Lojista no PicPay tenha saldo para
         realizar o estorno e caso o cliente PicPay tenha recebido algum cashback nesta transação, este valor será estornado do cliente
         (para isto o mesmo deve possuir saldo). Todas esses requisitos devem ser cumpridos para que o estorno da transação ocorra com sucesso.
-        
+
         b) Se ainda não foi pago, a transação será cancelada em nosso servidor e não permitirá pagamento por parte do cliente PicPay;
 
         Saiba mais em: https://ecommerce.picpay.com/doc/#tag/Cancelamento
@@ -82,7 +90,7 @@ class PicPay(object):
 
         return request
 
-    def status(self, reference_id):
+    def status(self, reference_id: str) -> dict:
         """
         Utilize o endpoint (requisição GET) abaixo para consultar o status de sua requisição de pagameto.
 
@@ -98,7 +106,7 @@ class PicPay(object):
 
         return request
 
-    def notification(self, reference_id):
+    def notification(self, reference_id: str) -> dict:
         """
         Iremos notificar o callbackUrl (fornecido na requisição de pagamento), via método POST, informando que houve uma alteração no status do pedido.
 
@@ -106,7 +114,7 @@ class PicPay(object):
         Para isto, sua loja (a partir do recebimento de nossa notificação) deverá consultar nosso endpoint de status de pedidos.
 
         Para que o callback seja considerado confirmado, sua loja deve responder com HTTP Status 200.
-        
+
         Saiba mais em: https://ecommerce.picpay.com/doc/#operation/postCallbacks
         """
         path = "callback"

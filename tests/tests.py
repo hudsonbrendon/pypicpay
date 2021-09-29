@@ -1,15 +1,14 @@
 import unittest
-import requests_mock
 
+import requests_mock
 from picpay import PicPay
-from decouple import config
 
 
 class TestPicPay(unittest.TestCase):
     def setUp(self):
         self.picpay = PicPay(
-            x_picpay_token=config("X_PICPAY_TOKEN"),
-            x_seller_token=config("X_SELLER_TOKEN"),
+            x_picpay_token="x_picpay_token",
+            x_seller_token="x_seller_token",
         )
 
     def test_get_url(self):
