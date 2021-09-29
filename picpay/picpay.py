@@ -16,12 +16,27 @@ class PicPay(object):
 
     @property
     def headers(self) -> dict:
+        """Formata os headers de autenticação da requisição.
+
+        Returns:
+            dict: Headers de autenticação.
+        """
         return {
             "x-picpay-token": self._x_picpay_token,
             "x-seller-token": self._x_seller_token,
         }
 
     def _request(self, method: str, path: str, json: dict, **kwargs):
+        """Realiza uma requisição HTTP.
+
+        Args:
+            method (str): Método http.
+            path (str): Caminho da requisição.
+            json (dict): Dados da requisição.
+
+        Returns:
+            [type]: O retorno da requisição.
+        """
         request = requests.request(
             method=method,
             url=self._get_url(path),
@@ -41,8 +56,7 @@ class PicPay(object):
         return_url: str = None,
         expires_at: str = None,
     ) -> dict:
-        """
-        Seu e-commerce irá solicitar o pagamento de um pedido através do PicPay na finalização do carrinho de compras.
+        """Seu e-commerce irá solicitar o pagamento de um pedido através do PicPay na finalização do carrinho de compras.
         Após a requisição http, o cliente deverá ser redirecionado para o endereço informada no campo paymentUrl para que o mesmo possa finalizar o pagamento.
 
         Assim que o pagamento for concluído o cliente será redirecionado para o endereço informada no campo returnUrl do json enviado pelo seu e-commerce no momento da requisição.
@@ -52,6 +66,17 @@ class PicPay(object):
         Para todos os casos iremos enviar um e-mail de pagamento pendente contendo o link de nossa página de checkout.
 
         Saiba mais em: https://ecommerce.picpay.com/doc/#tag/Requisicao-de-Pagamento
+
+        Args:
+            reference_id (str): Identificador único do ecommerce.
+            callback_url (str): Endereço de callback do ecommerce para notificações.
+            value (Decimal): Valor do pedido.
+            buyer (dict): Dados do comprador.
+            return_url (str, optional): . Endereço do pedido no ecommerce.
+            expires_at (str, optional): Data de expiração do pagamento.
+
+        Returns:
+            dict: Dados do pagamento.
         """
         path = "payments"
 
@@ -69,8 +94,7 @@ class PicPay(object):
         return request
 
     def cancellation(self, reference_id: str) -> dict:
-        """
-        Utilize este endereço para solicitar o cancelamento/estorno de um pedido. Valem as seguintes regras:
+        """Utilize este endereço para solicitar o cancelamento/estorno de um pedido. Valem as seguintes regras:
 
         a) Se já foi pago, o cliente PicPay será estornado caso sua conta de Lojista no PicPay tenha saldo para
         realizar o estorno e caso o cliente PicPay tenha recebido algum cashback nesta transação, este valor será estornado do cliente
@@ -79,6 +103,12 @@ class PicPay(object):
         b) Se ainda não foi pago, a transação será cancelada em nosso servidor e não permitirá pagamento por parte do cliente PicPay;
 
         Saiba mais em: https://ecommerce.picpay.com/doc/#tag/Cancelamento
+
+        Args:
+            reference_id (str): Identificador único do ecommerce.
+
+        Returns:
+            dict: Dados do cancelamento.
         """
         path = f"payments/{reference_id}/cancellations"
 
@@ -91,10 +121,15 @@ class PicPay(object):
         return request
 
     def status(self, reference_id: str) -> dict:
-        """
-        Utilize o endpoint (requisição GET) abaixo para consultar o status de sua requisição de pagameto.
+        """Utilize o endpoint (requisição GET) abaixo para consultar o status de sua requisição de pagameto.
 
         Saiba mais em: https://ecommerce.picpay.com/doc/#operation/getStatus
+
+        Args:
+            reference_id (str): Identificador único do ecommerce.
+
+        Returns:
+            dict: Dados do status.
         """
         path = f"payments/{reference_id}/status"
 
@@ -107,8 +142,7 @@ class PicPay(object):
         return request
 
     def notification(self, reference_id: str) -> dict:
-        """
-        Iremos notificar o callbackUrl (fornecido na requisição de pagamento), via método POST, informando que houve uma alteração no status do pedido.
+        """Iremos notificar o callbackUrl (fornecido na requisição de pagamento), via método POST, informando que houve uma alteração no status do pedido.
 
         Porém, por questões de segurança, não iremos informar o novo status nesta requisição.
         Para isto, sua loja (a partir do recebimento de nossa notificação) deverá consultar nosso endpoint de status de pedidos.
@@ -116,6 +150,12 @@ class PicPay(object):
         Para que o callback seja considerado confirmado, sua loja deve responder com HTTP Status 200.
 
         Saiba mais em: https://ecommerce.picpay.com/doc/#operation/postCallbacks
+
+        Args:
+            reference_id (str): Identificador único do ecommerce.
+
+        Returns:
+            dict: Dados da notificação.
         """
         path = "callback"
 
