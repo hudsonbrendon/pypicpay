@@ -150,16 +150,20 @@ Certifique-se de que o [Pipenv](https://github.com/kennethreitz/pipenv) está in
 $ pip install -U pipenv
 ```
 
-Acesse o repositório e instale as dependências:
+Instale as dependências:
 
 ```bash
-$ make install
+$ pipenv install
+```
+
+```bash
+$ pipenv install --dev
 ```
 
 Para executar os testes:
 
 ```bash
-$ make test
+$ make dev
 ```
 
 # Dependências
