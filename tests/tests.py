@@ -7,7 +7,8 @@ from picpay import PicPay
 class TestPicPay(unittest.TestCase):
     def setUp(self):
         self.picpay = PicPay(
-            x_picpay_token="x_picpay_token", x_seller_token="x_seller_token",
+            x_picpay_token="x_picpay_token",
+            x_seller_token="x_seller_token",
         )
 
     def test_get_url(self):
@@ -26,7 +27,7 @@ class TestPicPay(unittest.TestCase):
     def test_payment(self, request_mock):
         url = self.picpay._get_url(path="payments")
         json = {
-            "referenceId": "102030",
+            "referenceId": "12345",
             "paymentUrl": "https://app.picpay.com/checkout/NWUzM2IwYjNiM2U0YmI0M2U5Njk1NjAy",
             "qrcode": {
                 "content": "https://app.picpay.com/checkout/NWUzM2IwYjNiM2U0YmI0M2U5Njk1NjAy",
@@ -36,9 +37,9 @@ class TestPicPay(unittest.TestCase):
         }
         request_mock.post(url=url, json=json)
         payment = self.picpay.payment(
-            reference_id=102030,
+            reference_id=12345,
             callback_url="http://www.sualoja.com.br/callback",
-            return_url="http://www.sualoja.com.br/cliente/pedido/102030",
+            return_url="http://www.sualoja.com.br/cliente/pedido/12345",
             value=20.50,
             expires_at="2022-05-01T16:00:00-03:00",
             buyer={
@@ -53,18 +54,18 @@ class TestPicPay(unittest.TestCase):
 
     @requests_mock.Mocker()
     def test_cancellation(self, request_mock):
-        url = self.picpay._get_url(path="payments/102030/cancellations")
-        json = {"referenceId": "102030", "cancellationId": "5e34e3415385626b6d18f25c"}
+        url = self.picpay._get_url(path="payments/12345/cancellations")
+        json = {"referenceId": "12345", "cancellationId": "5e34e3415385626b6d18f25c"}
         request_mock.post(url=url, json=json)
-        cancellation = self.picpay.cancellation(reference_id=102030)
+        cancellation = self.picpay.cancellation(reference_id=12345)
         self.assertEqual(cancellation, json)
 
     @requests_mock.Mocker()
     def test_status(self, request_mock):
-        url = self.picpay._get_url(path="payments/102030/status")
-        json = {"referenceId": "102030", "status": "expired"}
+        url = self.picpay._get_url(path="payments/12345/status")
+        json = {"referenceId": "12345", "status": "expired"}
         request_mock.get(url=url, json=json)
-        status = self.picpay.status(reference_id=102030)
+        status = self.picpay.status(reference_id=12345)
         self.assertEqual(status, json)
 
     @requests_mock.Mocker()
@@ -72,7 +73,7 @@ class TestPicPay(unittest.TestCase):
         url = self.picpay._get_url(path="callback")
         json = {}
         request_mock.post(url=url, json=json)
-        notification = self.picpay.notification(reference_id=102030)
+        notification = self.picpay.notification(reference_id=12345)
         self.assertEqual(notification, json)
 
 
