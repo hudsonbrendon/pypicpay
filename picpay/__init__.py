@@ -1,1 +1,1 @@
-from .picpay import PicPay
+from .picpay import PicPay  # noqa: F401

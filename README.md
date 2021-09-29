@@ -164,8 +164,7 @@ $ make test
 
 # Dependências
 
-- [Python 3.7+](https://www.python.org/downloads/release/python-374/)
-- [Pipenv](https://github.com/kennethreitz/pipenv)
+- [Python >=3.7](https://www.python.org/downloads/release/python-374/)
 
 # Licença
 
