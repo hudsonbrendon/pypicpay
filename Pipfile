@@ -10,6 +10,8 @@ python-decouple = "*"
 setuptools = "*"
 wheel = "*"
 twine = "*"
+isort = "*"
+flake8 = "*"
 
 [packages]
 requests = "*"
