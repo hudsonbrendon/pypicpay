@@ -12,4 +12,5 @@ test:
 
 dev:
 	make install
+	make black
 	make test
