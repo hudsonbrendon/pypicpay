@@ -7,8 +7,7 @@ from picpay import PicPay
 class TestPicPay(unittest.TestCase):
     def setUp(self):
         self.picpay = PicPay(
-            x_picpay_token="x_picpay_token",
-            x_seller_token="x_seller_token",
+            x_picpay_token="x_picpay_token", x_seller_token="x_seller_token",
         )
 
     def test_get_url(self):
