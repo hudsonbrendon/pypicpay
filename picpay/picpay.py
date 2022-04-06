@@ -93,12 +93,13 @@ class PicPay(object):
 
         return request
 
-    def cancellation(self, reference_id: str) -> dict:
+    def cancellation(self, reference_id: str, authorization_id: str = None) -> dict:
         """Utilize este endereço para solicitar o cancelamento/estorno de um pedido. Valem as seguintes regras:
 
         a) Se já foi pago, o cliente PicPay será estornado caso sua conta de Lojista no PicPay tenha saldo para
         realizar o estorno e caso o cliente PicPay tenha recebido algum cashback nesta transação, este valor será estornado do cliente
-        (para isto o mesmo deve possuir saldo). Todas esses requisitos devem ser cumpridos para que o estorno da transação ocorra com sucesso.
+        (para isto o mesmo deve possuir saldo). Além disso, é nescessário o ID de autorização, conforme a documentação do PicPay. Todas
+        esses requisitos devem ser cumpridos para que o estorno da transação ocorra com sucesso.
 
         b) Se ainda não foi pago, a transação será cancelada em nosso servidor e não permitirá pagamento por parte do cliente PicPay;
 
@@ -106,6 +107,7 @@ class PicPay(object):
 
         Args:
             reference_id (str): Identificador único do ecommerce.
+            authorization_id (str, optional): ID de autorização equivalente ao pagamento.
 
         Returns:
             dict: Dados do cancelamento.
@@ -115,6 +117,9 @@ class PicPay(object):
         json = {
             "referenceId": reference_id,
         }
+        
+        if authorization_id:
+            json["authorization_id"] = authorization_id
 
         request = self._request(method="post", path=path, json=json)
 
