@@ -117,7 +117,7 @@ class PicPay(object):
         json = {
             "referenceId": reference_id,
         }
-        
+
         if authorization_id:
             json["authorization_id"] = authorization_id
 
