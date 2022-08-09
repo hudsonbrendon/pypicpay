@@ -1,20 +1,20 @@
 install:
-	pipenv run python setup.py install
+	poetry run python setup.py install
 
 isort:
-	pipenv run isort .
+	poetry run isort .
 
 flake8:
-	pipenv run flake8 .
+	poetry run flake8 .
 
 black:
-	pipenv run black . --check
+	poetry run black . --check
 
 coverage:
-	pipenv run coverage report -m
+	poetry run coverage report -m
 
 test:
-	pipenv run python tests/tests.py
+	poetry run python tests/tests.py
 
 dev:
 	make install
