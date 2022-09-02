@@ -1,9 +1,13 @@
 [tool.poetry]
-name = "picpay-python"
-version = "0.4.2"
+name = "pypicpay"
+version = "0.4.3"
 description = "Aceite PicPay e faça parte do movimento que está revolucionando a relação com o dinheiro no Brasil."
 authors = ["Hudson Brendon <contato.hudsonbrendon@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/hudsonbrendon/picpay"
+homepage = "https://github.com/hudsonbrendon/picpay#readme"
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -12,14 +16,19 @@ requests = "*"
 [tool.poetry.dev-dependencies]
 requests-mock = "*"
 black = "*"
-python-decouple = "*"
-setuptools = "*"
-wheel = "*"
-twine = "*"
-isort = "*"
 flake8 = "*"
 pre-commit = "^2.20.0"
+pytest = "^7.1.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[settings]
+known_third_party = ["pytest", "requests"]
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"

@@ -1,4 +1,4 @@
-# PicPay Python
+# Pypicpay
 
 Aceite PicPay e faça parte do movimento que está revolucionando a relação com o dinheiro no Brasil.
 
@@ -19,14 +19,8 @@ Aceite PicPay e faça parte do movimento que está revolucionando a relação co
 # Instalação
 
 ```bash
-$ pip install picpay-python
+$ pip install pypicpay
 ```
-ou
-
-```bash
-$ python setup.py install
-```
-
 # Modo de usar
 
 Todas as APIs do PicPay Developers foram desenvolvidas baseadas na tecnologia REST, seguindo os atuais padrões técnicos de mercado. Tudo isso para que a experiência na hora da integração seja a mais fácil possível. Todas as URLs são amigáveis e orientadas a recursos e utilizam os padrões do protocolo HTTP como autenticação, verbos e códigos de retorno. Isso permite que APIs possam ser utilizadas por clientes HTTP já existentes. Todas as respostas são retornadas no formato JSON.
@@ -48,12 +42,10 @@ Caso seja identificado que seu cliente também é cliente PicPay, iremos enviar 
 Saiba mais em: https://ecommerce.picpay.com/doc/#tag/Requisicao-de-Pagamento
 
 ```python
-from picpay import PicPay
-from decouple import config
-
+from pypicpay import PicPay
 
 picpay = PicPay(
-    x_picpay_token=config("X_PICPAY_TOKEN"), x_seller_token=config("X_SELLER_TOKEN")
+    x_picpay_token="X_PICPAY_TOKEN", x_seller_token="X_SELLER_TOKEN"
 )
 
 payment = picpay.payment(
@@ -83,12 +75,11 @@ b) Se ainda não foi pago, a transação será cancelada em nosso servidor e nã
 Saiba mais em: https://ecommerce.picpay.com/doc/#tag/Cancelamento
 
 ```python
-from picpay import PicPay
-from decouple import config
+from pypicpay import PicPay
 
 
 picpay = PicPay(
-    x_picpay_token=config("X_PICPAY_TOKEN"), x_seller_token=config("X_SELLER_TOKEN")
+    x_picpay_token="X_PICPAY_TOKEN", x_seller_token="X_SELLER_TOKEN"
 )
 
 cancellation = picpay.cancellation(reference_id=102030)
@@ -101,12 +92,11 @@ Utilize este método para solicitar o status de um pedido.
 Saiba mais em: https://ecommerce.picpay.com/doc/#operation/getStatus
 
 ```python
-from picpay import PicPay
-from decouple import config
+from pypicpay import PicPay
 
 
 picpay = PicPay(
-    x_picpay_token=config("X_PICPAY_TOKEN"), x_seller_token=config("X_SELLER_TOKEN")
+    x_picpay_token="X_PICPAY_TOKEN", x_seller_token="X_SELLER_TOKEN"
 )
 
 status = picpay.status(reference_id=102030)
@@ -126,12 +116,11 @@ Iremos enviar uma notificação para sua loja nas seguintes trocas de status:
 Saiba mais em: https://ecommerce.picpay.com/doc/#tag/Notificacao
 
 ```python
-from picpay import PicPay
-from decouple import config
+from pypicpay import PicPay
 
 
 picpay = PicPay(
-    x_picpay_token=config("X_PICPAY_TOKEN"), x_seller_token=config("X_SELLER_TOKEN")
+    x_picpay_token="X_PICPAY_TOKEN", x_seller_token="X_SELLER_TOKEN"
 )
 
 notification = picpay.notification(reference_id=3434)
@@ -142,34 +131,29 @@ notification = picpay.notification(reference_id=3434)
 Clone o projeto repositório:
 
 ```bash
-$ git clone https://github.com/hudsonbrendon/picpay-python.git
+$ git clone https://github.com/hudsonbrendon/pypicpay.git
 ```
 
-Certifique-se de que o [Pipenv](https://github.com/kennethreitz/pipenv) está instalado, caso contrário:
+Certifique-se de que o [Poetry](https://python-poetry.org/) está instalado, caso contrário:
 
 ```bash
-$ pip install -U pipenv
+$ pip install -U poetry
 ```
 
 Instale as dependências:
 
 ```bash
-$ pipenv install
+$ poetry install
 ```
-
-```bash
-$ pipenv install --dev
-```
-
 Para executar os testes:
 
 ```bash
-$ make dev
+$ pytest
 ```
 
 # Dependências
 
-- [Python >=3.7](https://www.python.org/downloads/release/python-374/)
+- [Python >=3.8](https://www.python.org/downloads/release/python-388/)
 
 # Licença
 

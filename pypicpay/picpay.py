@@ -5,14 +5,49 @@ import requests
 
 class PicPay(object):
 
-    _URL = "https://appws.picpay.com/ecommerce/public/"
+    __URL = "https://appws.picpay.com/ecommerce/public/"
 
     def __init__(self, x_picpay_token: str, x_seller_token: str):
-        self._x_picpay_token = x_picpay_token
-        self._x_seller_token = x_seller_token
+        self.__x_picpay_token = x_picpay_token
+        self.__x_seller_token = x_seller_token
 
-    def _get_url(self, path: str) -> str:
-        return f"{self._URL}{path}"
+    @property
+    def _x_picpay_token(self):
+        """The _x_picpay_token
+
+        Returns:
+            _type_: The _x_picpay_token
+        """
+        return self.__x_picpay_token
+
+    @property
+    def _x_seller_token(self):
+        """The _x_seller_token
+
+        Returns:
+            _type_: The _x_seller_token
+        """
+        return self.__x_seller_token
+
+    @property
+    def url(self):
+        """The base url
+
+        Returns:
+            _type_: the base url
+        """
+        return self.__URL
+
+    def _get_full_url(self, path: str) -> str:
+        """Return the full url
+
+        Args:
+            path (str): path of url
+
+        Returns:
+            str: The full url
+        """
+        return f"{self.url}{path}"
 
     @property
     def headers(self) -> dict:
@@ -39,7 +74,7 @@ class PicPay(object):
         """
         request = requests.request(
             method=method,
-            url=self._get_url(path),
+            url=self._get_full_url(path),
             headers=self.headers,
             json=json,
             **kwargs,
@@ -93,7 +128,9 @@ class PicPay(object):
 
         return request
 
-    def cancellation(self, reference_id: str, authorization_id: str = None) -> dict:
+    def cancellation(
+        self, reference_id: str, authorization_id: str = None
+    ) -> dict:
         """Utilize este endereço para solicitar o cancelamento/estorno de um pedido. Valem as seguintes regras:
 
         a) Se já foi pago, o cliente PicPay será estornado caso sua conta de Lojista no PicPay tenha saldo para
