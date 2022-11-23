@@ -1,4 +1,5 @@
 from decimal import Decimal
+from urllib.request import Request
 
 import requests
 
@@ -7,12 +8,12 @@ class PicPay(object):
 
     __URL = "https://appws.picpay.com/ecommerce/public/"
 
-    def __init__(self, x_picpay_token: str, x_seller_token: str):
+    def __init__(self, x_picpay_token: str, x_seller_token: str) -> None:
         self.__x_picpay_token = x_picpay_token
         self.__x_seller_token = x_seller_token
 
     @property
-    def _x_picpay_token(self):
+    def _x_picpay_token(self) -> str:
         """The _x_picpay_token
 
         Returns:
@@ -21,7 +22,7 @@ class PicPay(object):
         return self.__x_picpay_token
 
     @property
-    def _x_seller_token(self):
+    def _x_seller_token(self) -> str:
         """The _x_seller_token
 
         Returns:
@@ -30,7 +31,7 @@ class PicPay(object):
         return self.__x_seller_token
 
     @property
-    def url(self):
+    def url(self) -> str:
         """The base url
 
         Returns:
@@ -61,7 +62,9 @@ class PicPay(object):
             "x-seller-token": self._x_seller_token,
         }
 
-    def _request(self, method: str, path: str, json: dict, **kwargs):
+    def _request(
+        self, method: str, path: str, json: dict, **kwargs
+    ) -> Request:
         """Realiza uma requisição HTTP.
 
         Args:
@@ -72,15 +75,13 @@ class PicPay(object):
         Returns:
             [type]: O retorno da requisição.
         """
-        request = requests.request(
+        return requests.request(
             method=method,
             url=self._get_full_url(path),
             headers=self.headers,
             json=json,
             **kwargs,
-        )
-        json = request.json()
-        return json
+        ).json()
 
     def payment(
         self,
