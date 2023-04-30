@@ -1,0 +1,45 @@
+version: 2
+updates:
+  # Defina a fonte dos pacotes, neste exemplo é a PyPI
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Configurações para atualizações automáticas de dependências
+    # Pode ser definido como "increase" para atualizar apenas patches e minor releases
+    # Ou "widen" para atualizar qualquer dependência para a última versão compatível
+    # Consulte a documentação para obter mais informações sobre as opções de atualização.
+    # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates#configuration-options-for-version-updates
+    dependency-ecosystem: "pip"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+    open-pull-requests-limit: 5
+    version: "2.0.240"
+    # Defina os caminhos para os arquivos de manifesto do Poetry
+    # e para os arquivos de bloqueio de versão, se aplicável
+    # Certifique-se de substituir `<diretório do projeto>` pelo caminho real
+    directory: "<diretório do projeto>"
+    target-branches:
+      - "main"
+    # Defina quais tipos de atualizações você deseja permitir
+    # Aqui, permitimos atualizações para patch releases e minor releases
+    # Consulte a documentação para obter mais informações sobre as opções de atualização.
+    # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates#configuration-options-for-version-updates
+    updates:
+      - package-ecosystem: "pip"
+        directory: "/"
+        schedule:
+          interval: "daily"
+        # Permite atualizações para patch releases e minor releases
+        # Bloqueia atualizações para major releases
+        # Consulte a documentação para obter mais informações sobre as opções de atualização.
+        # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates#configuration-options-for-version-updates
+        labels:
+          - "patch"
+          - "minor"
+        # Ignora pacotes específicos, se necessário
+        # Neste exemplo, ignoramos todas as versões pré-lançadas de pytest
+        ignore:
+          - dependency-name: "pytest"
+            versions: [">=6.0.0a1, <7.0.0"]
