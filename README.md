@@ -5,6 +5,17 @@ Aceite PicPay e faça parte do movimento que está revolucionando a relação co
 ![Python package](https://github.com/hudsonbrendon/picpay-python/workflows/Python%20package/badge.svg?branch=master)
 [![Github Issues](https://img.shields.io/github/issues/hudsonbrendon/picpay-python.svg?style=flat)](https://github.com/hudsonbrendon/picpay-python/issues?sort=updated&state=open)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=bugs)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=hudsonbrendon_pypicpay&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=hudsonbrendon_pypicpay)
 
 ![PicPay](https://logodownload.org/wp-content/uploads/2018/05/picpay-logo-1.png)
 
