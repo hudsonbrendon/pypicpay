@@ -3,23 +3,24 @@
 Aceite PicPay e faça parte do movimento que está revolucionando a relação com o dinheiro no Brasil.
 
 ![Python package](https://github.com/hudsonbrendon/picpay-python/workflows/Python%20package/badge.svg?branch=master)
-[![Github Issues](http://img.shields.io/github/issues/hudsonbrendon/picpay-python.svg?style=flat)](https://github.com/hudsonbrendon/picpay-python/issues?sort=updated&state=open)
+[![Github Issues](https://img.shields.io/github/issues/hudsonbrendon/picpay-python.svg?style=flat)](https://github.com/hudsonbrendon/picpay-python/issues?sort=updated&state=open)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ![PicPay](https://logodownload.org/wp-content/uploads/2018/05/picpay-logo-1.png)
 
 # Recursos Disponíveis
 
-- [x]  Requisição de Pagamento
-- [x]  Cancelamento
-- [x]  Status
-- [x]  Notificação
+- [x] Requisição de Pagamento
+- [x] Cancelamento
+- [x] Status
+- [x] Notificação
 
 # Instalação
 
 ```bash
 $ pip install pypicpay
 ```
+
 # Modo de usar
 
 Todas as APIs do PicPay Developers foram desenvolvidas baseadas na tecnologia REST, seguindo os atuais padrões técnicos de mercado. Tudo isso para que a experiência na hora da integração seja a mais fácil possível. Todas as URLs são amigáveis e orientadas a recursos e utilizam os padrões do protocolo HTTP como autenticação, verbos e códigos de retorno. Isso permite que APIs possam ser utilizadas por clientes HTTP já existentes. Todas as respostas são retornadas no formato JSON.
@@ -50,7 +51,7 @@ picpay = PicPay(
 payment = picpay.payment(
     reference_id=102030,
     callback_url="https://picpay.com/site",
-    return_url="http://www.sualoja.com.br/cliente/pedido/102030",
+    return_url="https://www.sualoja.com.br/cliente/pedido/102030",
     value=20.50,
     expires_at="2022-05-01T16:00:00-03:00",
     buyer={
@@ -144,6 +145,7 @@ Instale as dependências:
 ```bash
 $ poetry install
 ```
+
 Para executar os testes:
 
 ```bash
@@ -156,5 +158,4 @@ $ pytest
 
 # Licença
 
-[MIT](http://en.wikipedia.org/wiki/MIT_License)
-
+[MIT](https://en.wikipedia.org/wiki/MIT_License)

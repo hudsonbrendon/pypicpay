@@ -29,8 +29,8 @@ class TestPicPay:
         requests_mock.post(url=url, json=payment_payload)
         payment = picpay.payment(
             reference_id=102030,
-            callback_url="http://www.sualoja.com.br/callback",
-            return_url="http://www.sualoja.com.br/cliente/pedido/102030",
+            callback_url="https://www.sualoja.com.br/callback",
+            return_url="https://www.sualoja.com.br/cliente/pedido/102030",
             value=20.50,
             expires_at="2022-05-01T16:00:00-03:00",
             buyer=buyer,
