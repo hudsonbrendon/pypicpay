@@ -29,9 +29,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install poetry
+          poetry config ${{ secrets.PYPI_SECRET_KEY }}
       - name: Check Package
         run: poetry check
       - name: Build Package
         run: poetry build
       - name: Publish Package
-        run: poetry publish --username=${{ secrets.PYPI_USERNAME }} --password=${{ secrets.PYPI_PASSWORD }}
+        run: poetry publish
