@@ -2,7 +2,7 @@ from pypicpay import PicPay, __version__
 
 
 def test_version():
-    assert __version__ == "0.4.5"
+    assert __version__ == "0.4.6"
 
 
 class TestPicPay:
